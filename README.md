@@ -22,28 +22,44 @@ Explicación: Esta consulta agrupa las ventas por método de pago, cuenta el nú
 
 2. Categoría que genera mayor facturación
 
-   SELECT 
+   SELECT
+   
     c.nombre as categoria,
+   
     SUM(dv.cantidad * dv.precio_unitario) as facturacion_total
+   
 FROM categoria c
+
 INNER JOIN producto p ON c.categoria_id = p.categoria_id
+
 INNER JOIN detalle_venta dv ON p.producto_id = dv.producto_id
+
 GROUP BY c.categoria_id, c.nombre
+
 ORDER BY facturacion_total DESC
+
 LIMIT 1;
 
 Explicación: Une las tablas categoria, producto y detalle_venta para calcular la facturación total por categoría. El resultado se ordena descendentemente y se limita al primer registro (mayor facturación).
 
 3. Empleado con mejor desempeño (más ventas realizadas)
 
-   SELECT 
+   SELECT
+   
     e.nombre,
+   
     e.apellido,
+   
     COUNT(v.venta_id) as total_ventas
+   
 FROM empleado e
+
 INNER JOIN venta v ON e.empleado_id = v.empleado_id
+
 GROUP BY e.empleado_id, e.nombre, e.apellido
+
 ORDER BY total_ventas DESC
+
 LIMIT 1;
 
 Explicación: Cuenta el número de ventas realizadas por cada empleado, agrupando por empleado y ordenando por el total de ventas de mayor a menor.
@@ -51,7 +67,9 @@ Explicación: Cuenta el número de ventas realizadas por cada empleado, agrupand
 4. Evolución del inventario de un producto específico
 
    -- Para un producto específico (ejemplo: producto_id = 1)
-SELECT 
+   
+SELECT
+
     v.fecha,
     p.nombre as producto,
     p.stock_inicial,
