@@ -2,13 +2,20 @@
 
 1. Distribución de ventas por método de pago
 
-   SELECT 
+   SELECT
+   
     metodo_pago,
+   
     COUNT(*) as numero_ventas,
+   
     SUM(dv.cantidad * dv.precio_unitario) as monto_total_facturado
+   
 FROM venta v
+
 INNER JOIN detalle_venta dv ON v.venta_id = dv.venta_id
+
 GROUP BY metodo_pago
+
 ORDER BY monto_total_facturado DESC;
 
 Explicación: Esta consulta agrupa las ventas por método de pago, cuenta el número de transacciones y suma el monto total facturado calculando cantidad × precio unitario para cada detalle de venta.
