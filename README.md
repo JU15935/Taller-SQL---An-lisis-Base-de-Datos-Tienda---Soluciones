@@ -1,4 +1,4 @@
-# Taller-SQL---An-lisis-Base-de-Datos-Tienda---Soluciones
+ # Taller-SQL---An-lisis-Base-de-Datos-Tienda---Soluciones
 
 1. Distribución de ventas por método de pago
 
